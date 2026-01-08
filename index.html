@@ -567,7 +567,7 @@
                 <div class="difficulty-grid">
                     <!-- 課長 -->
                     <div class="difficulty-card beginner" onclick="startExam('beginner')">
-                        <div class="difficulty-icon">📊</div>
+                        <div class="difficulty-icon">👨‍💼</div>
                         <div class="difficulty-title">課長</div>
                         <div class="difficulty-description">基本情報をしっかり理解しよう</div>
                         <div class="difficulty-details">
@@ -583,7 +583,7 @@
 
                     <!-- 部長 -->
                     <div class="difficulty-card intermediate" onclick="startExam('intermediate')">
-                        <div class="difficulty-icon">👔</div>
+                        <div class="difficulty-icon">👨‍✈️</div>
                         <div class="difficulty-title">部長</div>
                         <div class="difficulty-description">詳細な情報を理解しよう</div>
                         <div class="difficulty-details">
@@ -599,12 +599,12 @@
 
                     <!-- 市長 -->
                     <div class="difficulty-card advanced" onclick="startExam('advanced')">
-                        <div class="difficulty-icon">🏛️</div>
+                        <div class="difficulty-icon">👨‍💼</div>
                         <div class="difficulty-title">市長</div>
                         <div class="difficulty-description">複合的な分析力を試そう</div>
                         <div class="difficulty-details">
                             <ul>
-                                <li>問題数：2問</li>
+                                <li>問題数：5問</li>
                                 <li>形式：記述問題</li>
                                 <li>配点：100点</li>
                                 <li>難易度：★★★</li>
@@ -646,13 +646,13 @@
                             </tr>
                             <tr>
                                 <td>市長</td>
-                                <td>2問</td>
-                                <td>各50点</td>
+                                <td>5問</td>
+                                <td>各20点</td>
                                 <td>100点</td>
                             </tr>
                             <tr style="background: #667eea; color: white; font-weight: 700;">
                                 <td>合計</td>
-                                <td>22問</td>
+                                <td>25問</td>
                                 <td>-</td>
                                 <td>350点</td>
                             </tr>
@@ -660,21 +660,13 @@
                     </table>
 
                     <div class="evaluation-section">
-                        <h3>🎯 評価基準</h3>
+                        <h3>🎯 評価基準（各階級ごと）</h3>
                         <div class="evaluation-item">
-                            <span class="evaluation-desc">280点以上</span>
-                            <span class="evaluation-score">優秀</span>
-                        </div>
-                        <div class="evaluation-item">
-                            <span class="evaluation-desc">240点～279点</span>
-                            <span class="evaluation-score">良好</span>
-                        </div>
-                        <div class="evaluation-item">
-                            <span class="evaluation-desc">180点～239点</span>
+                            <span class="evaluation-desc">80点以上</span>
                             <span class="evaluation-score">合格</span>
                         </div>
                         <div class="evaluation-item">
-                            <span class="evaluation-desc">180点未満</span>
+                            <span class="evaluation-desc">80点未満</span>
                             <span class="evaluation-score">再受検推奨</span>
                         </div>
                     </div>
@@ -1003,11 +995,11 @@
                 {
                     id: 'q21',
                     number: '問題1',
-                    title: '宗像地域の2つの活性化戦略（1）',
+                    title: '宗像地域の2つの活性化戦略',
                     text: '2025年12月の宗像地域では、「子どもおとな会議」によるクリスマスイベントと「宗像陸上養殖」による宗像サーモン販売という、2つの異なる活性化戦略が展開されています。これら2つの取り組みが、宗像地域にもたらす効果の違いと共通点を説明してください。',
                     type: 'textarea',
                     keywords: ['効果の違い', '共通点', '世代間連携', '経済的', 'ブランド', '資源'],
-                    points: 50
+                    points: 20
                 },
                 {
                     id: 'q22',
@@ -1016,7 +1008,34 @@
                     text: '2025年12月に宗像地域で展開されたイベントや事業から、宗像地域が目指す「持続可能な発展」の形を分析し、今後の課題と可能性について述べてください。',
                     type: 'textarea',
                     keywords: ['持続可能', '官民連携', 'コミュニティ', 'ブランド化', '地域資源', '世代間'],
-                    points: 50
+                    points: 20
+                },
+                {
+                    id: 'q23',
+                    number: '問題3',
+                    title: '子どもおとな会議の意義',
+                    text: '自由ヶ丘地区の「子どもおとな会議」が、宗像地域のまちづくりにおいて果たす役割と、その継続性について述べてください。',
+                    type: 'textarea',
+                    keywords: ['子ども目線', 'まちづくり', '世代間連携', '継続性', '地域活性化'],
+                    points: 20
+                },
+                {
+                    id: 'q24',
+                    number: '問題4',
+                    title: '宗像サーモンのブランド化',
+                    text: '宗像陸上養殖による「宗像サーモン」が、宗像地域の産業振興にどのように貢献するか、その戦略と展望を述べてください。',
+                    type: 'textarea',
+                    keywords: ['ブランド化', '産業振興', '地域資源', '経済効果', '西日本最大級'],
+                    points: 20
+                },
+                {
+                    id: 'q25',
+                    number: '問題5',
+                    title: '官民連携による地域づくり',
+                    text: 'JR赤間駅前での「公園ミライ会議」など、官民連携による地域づくりの重要性と、宗像地域における今後の展開について述べてください。',
+                    type: 'textarea',
+                    keywords: ['官民連携', '持続可能な運営', '公園', 'コミュニティ', '地域づくり'],
+                    points: 20
                 }
             ]
         };
@@ -1164,14 +1183,8 @@
             const percentage = (total / maxScore) * 100;
 
             if (percentage >= 80) {
-                message = '🌟 素晴らしい成績です！';
-                evaluation = '優秀 - 宗像地域をよく理解しています。';
-            } else if (percentage >= 60) {
-                message = '👍 良好な成績です！';
-                evaluation = '良好 - 宗像地域の主要な情報を理解しています。';
-            } else if (percentage >= 40) {
                 message = '✅ 合格です！';
-                evaluation = '合格 - 基本的な情報を理解しています。';
+                evaluation = '合格 - 宗像地域をよく理解しています。';
             } else {
                 message = '📚 もう一度チャレンジしてみましょう！';
                 evaluation = '再受検推奨 - もう一度記事を読んで、知識を深めてから再受検してください。';
