@@ -573,9 +573,9 @@
                         <div class="difficulty-details">
                             <ul>
                                 <li>問題数：10問</li>
-                                <li>形式：選択肢問題</li>
+                                <li>形式：選択肢問題、記述問題</li>
                                 <li>配点：100点</li>
-                                <li>難易度：★☆☆</li>
+                                <li>難易度：★★★</li>
                             </ul>
                         </div>
                         <button class="select-btn">課長を選択</button>
@@ -583,7 +583,7 @@
 
                     <!-- 部長 -->
                     <div class="difficulty-card intermediate" onclick="startExam('intermediate')">
-                        <div class="difficulty-icon">👨‍✈️</div>
+                        <div class="difficulty-icon">👨‍💼</div>
                         <div class="difficulty-title">部長</div>
                         <div class="difficulty-description">詳細な情報を理解しよう</div>
                         <div class="difficulty-details">
@@ -604,8 +604,8 @@
                         <div class="difficulty-description">複合的な分析力を試そう</div>
                         <div class="difficulty-details">
                             <ul>
-                                <li>問題数：5問</li>
-                                <li>形式：記述問題</li>
+                                <li>問題数：10問</li>
+                                <li>形式：選択肢問題、記述問題</li>
                                 <li>配点：100点</li>
                                 <li>難易度：★★★</li>
                             </ul>
@@ -619,8 +619,9 @@
                     <table class="scoring-table">
                         <thead>
                             <tr>
-                                <th>難易度</th>
+                                <th>階級</th>
                                 <th>問題数</th>
+                                <th>形式</th>
                                 <th>配点</th>
                                 <th>合計</th>
                             </tr>
@@ -629,32 +630,30 @@
                             <tr>
                                 <td>課長</td>
                                 <td>10問</td>
+                                <td>選択肢10問</td>
                                 <td>各10点</td>
                                 <td>100点</td>
                             </tr>
                             <tr>
-                                <td>部長（選択肢）</td>
-                                <td>8問</td>
-                                <td>各10点</td>
-                                <td>80点</td>
-                            </tr>
-                            <tr>
-                                <td>部長（記述）</td>
-                                <td>2問</td>
-                                <td>各35点</td>
-                                <td>70点</td>
+                                <td>部長</td>
+                                <td>10問</td>
+                                <td>選択肢8問+記述2問</td>
+                                <td>選択肢10点、記述25点</td>
+                                <td>100点</td>
                             </tr>
                             <tr>
                                 <td>市長</td>
-                                <td>5問</td>
-                                <td>各20点</td>
+                                <td>10問</td>
+                                <td>選択肢5問+記述5問</td>
+                                <td>選択肢10点、記述18点</td>
                                 <td>100点</td>
                             </tr>
                             <tr style="background: #667eea; color: white; font-weight: 700;">
                                 <td>合計</td>
-                                <td>25問</td>
+                                <td>30問</td>
                                 <td>-</td>
-                                <td>350点</td>
+                                <td>-</td>
+                                <td>300点</td>
                             </tr>
                         </tbody>
                     </table>
@@ -863,8 +862,8 @@
                 {
                     id: 'q11',
                     number: '問題1',
-                    title: '自由ヶ丘クリスマスイベントの開催場所',
-                    text: '宗像・自由ヶ丘地区のクリスマスイベントが12月21日に開催された2つの会場は、自由ヶ丘地区コミュニティ・センターと、もう一つどこだったでしょうか？',
+                    title: '自由ヶ丘クリスマスイベントの開业場所',
+                    text: '宗像・自由ヶ丘地区のクリスマスイベントが12月21日に開业された2つの会場は、自由ヶ丘地区コミュニティ・センターと、もう一つどこだったでしょうか？',
                     type: 'choice',
                     options: [
                         { value: 'a', label: 'ザビエル記念ホール' },
@@ -975,11 +974,11 @@
                 {
                     id: 'q19',
                     number: '問題9',
-                    title: '宗像サーモンの特徴',
+                    title: '宗像サーモンの特征',
                     text: '宗像サーモンが地下水を利用することで、どのような寄生虫が混入しないようになっているか答えてください。',
                     type: 'text',
                     correct: 'アニサキス',
-                    points: 35
+                    points: 25
                 },
                 {
                     id: 'q20',
@@ -988,7 +987,7 @@
                     text: '自由ヶ丘地区の「子どもおとな会議」が発足した年度と、その活動の目的を答えてください。',
                     type: 'textarea',
                     keywords: ['2022年度', '自由ヶ丘地区を盛り上げる', '子ども目線', 'まちづくり'],
-                    points: 35
+                    points: 25
                 }
             ],
             advanced: [
@@ -999,7 +998,7 @@
                     text: '2025年12月の宗像地域では、「子どもおとな会議」によるクリスマスイベントと「宗像陸上養殖」による宗像サーモン販売という、2つの異なる活性化戦略が展開されています。これら2つの取り組みが、宗像地域にもたらす効果の違いと共通点を説明してください。',
                     type: 'textarea',
                     keywords: ['効果の違い', '共通点', '世代間連携', '経済的', 'ブランド', '資源'],
-                    points: 20
+                    points: 18
                 },
                 {
                     id: 'q22',
@@ -1008,7 +1007,7 @@
                     text: '2025年12月に宗像地域で展開されたイベントや事業から、宗像地域が目指す「持続可能な発展」の形を分析し、今後の課題と可能性について述べてください。',
                     type: 'textarea',
                     keywords: ['持続可能', '官民連携', 'コミュニティ', 'ブランド化', '地域資源', '世代間'],
-                    points: 20
+                    points: 18
                 },
                 {
                     id: 'q23',
@@ -1017,7 +1016,7 @@
                     text: '自由ヶ丘地区の「子どもおとな会議」が、宗像地域のまちづくりにおいて果たす役割と、その継続性について述べてください。',
                     type: 'textarea',
                     keywords: ['子ども目線', 'まちづくり', '世代間連携', '継続性', '地域活性化'],
-                    points: 20
+                    points: 18
                 },
                 {
                     id: 'q24',
@@ -1026,7 +1025,7 @@
                     text: '宗像陸上養殖による「宗像サーモン」が、宗像地域の産業振興にどのように貢献するか、その戦略と展望を述べてください。',
                     type: 'textarea',
                     keywords: ['ブランド化', '産業振興', '地域資源', '経済効果', '西日本最大級'],
-                    points: 20
+                    points: 18
                 },
                 {
                     id: 'q25',
@@ -1035,7 +1034,7 @@
                     text: 'JR赤間駅前での「公園ミライ会議」など、官民連携による地域づくりの重要性と、宗像地域における今後の展開について述べてください。',
                     type: 'textarea',
                     keywords: ['官民連携', '持続可能な運営', '公園', 'コミュニティ', '地域づくり'],
-                    points: 20
+                    points: 18
                 }
             ]
         };
