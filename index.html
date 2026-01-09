@@ -511,6 +511,70 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
+        .user-count {
+            font-size: 1.3em;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .share-section {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .share-title {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: white;
+            color: #667eea;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95em;
+        }
+
+        .share-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .share-btn.twitter {
+            color: #1DA1F2;
+        }
+
+        .share-btn.facebook {
+            color: #1877F2;
+        }
+
+        .share-btn.line {
+            color: #00B900;
+        }
+
+        .share-btn.copy {
+            color: #667eea;
+        }
+
         .loading {
             display: inline-block;
             width: 20px;
@@ -644,8 +708,8 @@
                             <tr>
                                 <td>市長</td>
                                 <td>10問</td>
-                                <td>選択肢5問+記述5問</td>
-                                <td>選択肢5点、記述15点</td>
+                                <td>選択肢9問+記述1問</td>
+                                <td>選択肢10点、記述100点</td>
                                 <td>100点</td>
                             </tr>
                             <tr style="background: #667eea; color: white; font-weight: 700;">
@@ -700,6 +764,16 @@
                         <div class="result-detail-item">
                             <span id="resultDetailLabel"></span>
                             <span id="resultDetailScore"></span>
+                        </div>
+                    </div>
+                    <div class="user-count" id="userCountDisplay"></div>
+                    <div class="share-section">
+                        <div class="share-title">結果をシェアしよう！</div>
+                        <div class="share-buttons">
+                            <button class="share-btn twitter" onclick="shareTwitter()">𝕏でシェア</button>
+                            <button class="share-btn facebook" onclick="shareFacebook()">Facebookでシェア</button>
+                            <button class="share-btn line" onclick="shareLine()">LINEでシェア</button>
+                            <button class="share-btn copy" onclick="copyLink()">リンクをコピー</button>
                         </div>
                     </div>
                     <button class="retry-btn" onclick="retakeExam()">もう一度受験する</button>
@@ -1007,7 +1081,7 @@
                     text: '2025年12月に宗像地域で展開されたイベントや事業から、宗像地域が目指す「持続可能な発展」の形を分析し、今後の課題と可能性について述べてください。',
                     type: 'textarea',
                     keywords: ['持続可能', '官民連携', 'コミュニティ', 'ブランド化', '地域資源', '世代間'],
-                    points: 15
+                    points: 10
                 },
                 {
                     id: 'q23',
@@ -1016,7 +1090,7 @@
                     text: '自由ヶ丘地区の「子どもおとな会議」が、宗像地域のまちづくりにおいて果たす役割と、その継続性について述べてください。',
                     type: 'textarea',
                     keywords: ['子ども目線', 'まちづくり', '世代間連携', '継続性', '地域活性化'],
-                    points: 15
+                    points: 10
                 },
                 {
                     id: 'q24',
@@ -1025,7 +1099,7 @@
                     text: '宗像陸上養殖による「宗像サーモン」が、宗像地域の産業振興にどのように貢献するか、その戦略と展望を述べてください。',
                     type: 'textarea',
                     keywords: ['ブランド化', '産業振興', '地域資源', '経済効果', '西日本最大級'],
-                    points: 15
+                    points: 10
                 },
                 {
                     id: 'q25',
@@ -1034,7 +1108,7 @@
                     text: 'JR赤間駅前での「公園ミライ会議」など、官民連携による地域づくりの重要性と、宗像地域における今後の展開について述べてください。',
                     type: 'textarea',
                     keywords: ['官民連携', '持続可能な運営', '公園', 'コミュニティ', '地域づくり'],
-                    points: 15
+                    points: 10
                 },
                 {
                     id: 'q26',
@@ -1043,7 +1117,7 @@
                     text: 'JR赤間駅前でのクリスマスマーケット初開事業が、宗像地域の中心市街地を活性化させるためにどのような戦略的意義を持っているか、述べてください。',
                     type: 'textarea',
                     keywords: ['中心市街地活性化', '集客数', '地域経済', '市街地を盛り上げる', '活性化戦略'],
-                    points: 15
+                    points: 10
                 },
                 {
                     id: 'q27',
@@ -1052,7 +1126,7 @@
                     text: '宗像陸上養殖の「宗像サーモン」が、宗像地域の食文化と観光資源化にどのように貢献し、市場を拡大していくかを述べてください。',
                     type: 'textarea',
                     keywords: ['食文化', '観光資源', '地域特産', 'ブランド化', '市場拡大'],
-                    points: 15
+                    points: 10
                 },
                 {
                     id: 'q28',
@@ -1061,7 +1135,7 @@
                     text: '自由ヶ丘地区の「子どもおとな会議」を例に、子どもを中心としたまちづくりの会議体が、宗像地域の活性化にどのように機能し、今後の拡大可能性を述べてください。',
                     type: 'textarea',
                     keywords: ['子ども中心', '会議体', 'まちづくり', '活性化', '拡大可能性'],
-                    points: 15
+                    points: 10
                 },
                 {
                     id: 'q29',
@@ -1070,7 +1144,7 @@
                     text: '2025年12月の宗像地域で展開された複数のイベントを整理し、宗像地域が盤にしている活性化の方向性を分析し、今後の展開を述べてください。',
                     type: 'textarea',
                     keywords: ['イベント統程', '活性化の方向性', '戦略', '持続可能', '今後の展開'],
-                    points: 15
+                    points: 10
                 },
                 {
                     id: 'q30',
@@ -1079,7 +1153,7 @@
                     text: '本宗像検定を受験してみて、あなたが宗像地域のどのような特性を最も強いと感じたか、また、今後宗像地域をどのように発展させたいかを述べてください。',
                     type: 'textarea',
                     keywords: ['宗像地域の特性', '活性化', '発展', '宗像検定', '地域理解'],
-                    points: 15
+                    points: 100
                 }
             ]
         };
@@ -1240,8 +1314,55 @@
             document.getElementById('resultDetailLabel').textContent = `${currentDifficulty === 'beginner' ? '課長' : currentDifficulty === 'intermediate' ? '部長' : '市長'}`;
             document.getElementById('resultDetailScore').textContent = `${total} / ${maxScore}点`;
 
+            // ユーザーカウント表示
+            incrementUserCount();
+            const userCount = getUserCount();
+            document.getElementById('userCountDisplay').textContent = `あなたは${userCount}番目の受講生です！`;
+
+            // グローバル変数に現在のスコアを保存
+            window.currentScore = total;
+            window.maxScore = maxScore;
+            window.currentDifficultyLabel = currentDifficulty === 'beginner' ? '課長' : currentDifficulty === 'intermediate' ? '部長' : '市長';
+
             resultSection.classList.add('show');
             resultSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function getUserCount() {
+            let count = localStorage.getItem('munakatakentei_usercount');
+            return count ? parseInt(count) : 0;
+        }
+
+        function incrementUserCount() {
+            let count = getUserCount();
+            count++;
+            localStorage.setItem('munakatakentei_usercount', count);
+        }
+
+        function shareTwitter() {
+            const text = `宗像検定に合格しました！\n${window.currentDifficultyLabel}：${window.currentScore}/${window.maxScore}点\n\n宗像地域の知識を試してみませんか？`;
+            const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(window.location.href)}`;
+            window.open(url, '_blank');
+        }
+
+        function shareFacebook() {
+            const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
+            window.open(url, '_blank');
+        }
+
+        function shareLine() {
+            const text = `宗像検定に合格しました！${window.currentDifficultyLabel}：${window.currentScore}/${window.maxScore}点`;
+            const url = `https://line.me/R/msg/text/${encodeURIComponent(text + ' ' + window.location.href)}`;
+            window.open(url, '_blank');
+        }
+
+        function copyLink() {
+            const text = `宗像検定に挑戦してみてください！${window.location.href}`;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('リンクをコピーしました！');
+            }).catch(() => {
+                alert('コピーに失敗しました。');
+            });
         }
 
         function retakeExam() {
