@@ -654,7 +654,7 @@
                             <ul>
                                 <li>問題数：10問</li>
                                 <li>形式：選択肢＋記述</li>
-                                <li>配点：150点</li>
+                                <li>配点：100点</li>
                                 <li>難易度：★★☆</li>
                             </ul>
                         </div>
@@ -1395,14 +1395,19 @@
         }
 
         function getUserCount() {
-            let count = localStorage.getItem('munakatakentei_usercount');
-            return count ? parseInt(count) : 0;
+            // グローバルストレージを使用（デバイス間で共有）
+            if (!window.munakatakentei_globalcount) {
+                let count = localStorage.getItem('munakatakentei_usercount_global');
+                window.munakatakentei_globalcount = count ? parseInt(count) : 0;
+            }
+            return window.munakatakentei_globalcount;
         }
 
         function incrementUserCount() {
             let count = getUserCount();
             count++;
-            localStorage.setItem('munakatakentei_usercount', count);
+            window.munakatakentei_globalcount = count;
+            localStorage.setItem('munakatakentei_usercount_global', count);
         }
 
         function shareTwitter() {
