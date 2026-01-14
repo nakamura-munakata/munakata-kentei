@@ -558,8 +558,8 @@
                     <h3>課長</h3>
                     <p>基本情報をしっかり理解しよう</p>
                     <ul class="difficulty-info">
-                        <li>問題数：10問</li>
-                        <li>形式：選択肢10問</li>
+                        <li>問題数：11問</li>
+                        <li>形式：選択肂11問</li>
                         <li>配点：100点</li>
                         <li>難易度：★☆☆</li>
                     </ul>
@@ -681,7 +681,8 @@
                 {"id": "q7", "question": "宗像大社が祀っている神様は、「宗像〇女神」と呼ばれています。数字の〇に入るのは？", "options": ["三", "五", "七"], "correct": 0, "explanation": "宗像大社は「宗像三女神」を祀っており、これらの女神は古代日本で重要な信仰対象でした。"},
                 {"id": "q8", "question": "宗像市にあるJR鹿児島本線の主要駅で、市役所の最寄り駅（バス利用）でもある駅はどこでしょうか？", "options": ["赤間駅", "東郷駅", "教育大前駅"], "correct": 0, "explanation": "赤間駅はJR鹿児島本線の主要駅で、宗像市役所の最寄り駅です。"},
                 {"id": "q9", "question": "宗像市で最も標高が高い山（499.0メートル）の名前は何でしょうか？", "options": ["城山", "孔大寺山", "許斐山"], "correct": 1, "explanation": "孔大寺山が宗像市で最も標高が高い山で、499.0メートルです。"},
-                {"id": "q10", "question": "世界遺産の構成資産の一つで、海を隔てて沖ノ島を拝むために大島に作られた場所を何というでしょうか？", "options": ["沖津宮遙拝所", "中津宮", "辺津宮"], "correct": 0, "explanation": "沖津宮遙拝所は大島に作られた場所で、沖ノ島を拝むために造営されました。"}
+                {"id": "q10", "question": "世界遺産の構成資産の一つで、海を隔てて沖ノ島を拝むために大島に作られた場所を何というでしょうか？", "options": ["沖津宮遥拝所", "中津宮", "辺津宮"], "correct": 0, "explanation": "沖津宮遥拝所は大島に作られた場所で、沖ノ島を拝むために造営されました。"},
+                {"id": "q11", "question": "令7年12月、宗像ユリックス内に開業した、株式会社くりえいとが関わる「全天候型こども広場」の愛称は何でしょうか？", "options": ["Mu-Mo（ムーモ）", "Aso-Bo（アソボ）", "Muna-Kids（ムナキッズ）"], "correct": 0, "explanation": "令7年12月に宗像ユリックス内に開業した全天候型こども広場の愛称はMu-Mo（ムーモ）です。"}
             ],
             "intermediate": [
                 {"id": "q11", "question": "平成15年（2003年）に旧宗像市と合併して「新しい宗像市」となった町はどこでしょうか？", "options": ["津屋崎町", "玄海町", "大島村"], "correct": 1, "explanation": "平成15年に旧宗像市と玄海町が合併して、新しい宗像市が誕生しました。"},
@@ -769,7 +770,8 @@
                         explanation: q.explanation
                     };
                     if (answer === q.correct) {
-                        score += 10;
+                        const pointsPerQuestion = difficulty === 'beginner' ? Math.round(100 / 11 * 100) / 100 : 10;
+                        score += pointsPerQuestion;
                     }
                 } else {
                     answers[q.id] = {
@@ -783,7 +785,7 @@
                 }
             });
 
-            displayResults(score, difficulty, answers);
+            displayResults(Math.round(score), difficulty, answers);
         }
 
         function displayResults(score, difficulty, answers) {
@@ -812,6 +814,11 @@
             document.getElementById('result-user-count').textContent = `あなたは${userCount}番目の受講生です！`;
 
             displayAnswerReview(answers);
+            
+            // 結果セクションにスクロール
+            setTimeout(() => {
+                document.getElementById('result-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 300);
         }
 
         function displayAnswerReview(answers) {
