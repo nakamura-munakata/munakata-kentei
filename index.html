@@ -2,13 +2,27 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0066cc">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>宗像検定 2025年版</title>
+    <!-- OGP Meta Tags -->
+    <meta property="og:title" content="宗像検定 - 神宿る島への知の巡礼">
+    <meta property="og:description" content="世界遺産・宗像の歴史を紐解き、デジタル認定証と地域特典をその手に。24時間365日、どこからでも挑戦可能。">
+    <meta property="og:image" content="https://nakamura-munakata.github.io/munakata-kentei/images/ogp_image.png">
+    <meta property="og:url" content="https://nakamura-munakata.github.io/munakata-kentei/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="宗像検定 - 神宿る島への知の巡礼">
+    <meta name="twitter:description" content="世界遺産・宗像の歴史を紐解き、デジタル認定証と地域特典をその手に。">
+    <meta name="twitter:image" content="https://nakamura-munakata.github.io/munakata-kentei/images/ogp_image.png">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -16,8 +30,11 @@
             background: linear-gradient(135deg, #0066cc 0%, #0099ff 50%, #00ccff 100%);
             background-attachment: fixed;
             min-height: 100vh;
-            padding: 20px;
+            padding: 12px;
             position: relative;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         body::before {
@@ -76,6 +93,39 @@
             font-size: 2.5em;
             margin-bottom: 10px;
             font-weight: 700;
+        }
+
+        /* LP Link Banner */
+        .lp-banner {
+            background: linear-gradient(135deg, #1a2332 0%, #2c3e50 100%);
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .lp-banner p {
+            margin: 0;
+            font-size: 0.95em;
+        }
+
+        .lp-banner a {
+            background: #d84315;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .lp-banner a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(216, 67, 21, 0.4);
         }
 
         /* Hero Section with Munakata Images */
@@ -169,7 +219,17 @@
 
         .level-card:hover::before {
             left: 100%;
-        }x-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .difficulty-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 3px solid transparent;
         }
 
         .difficulty-card:hover {
@@ -227,23 +287,30 @@
             background: linear-gradient(135deg, #0066cc 0%, #0099ff 100%);
             color: white;
             border: none;
-            padding: 12px 30px;
+            padding: 14px 28px;
             border-radius: 6px;
-            font-size: 1em;
+            font-size: 1rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             font-weight: 600;
             position: relative;
             overflow: hidden;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 102, 204, 0.4);
+            min-height: 48px;
+            min-width: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
         }
 
         .btn:active {
-            transform: translateY(0);
+            transform: scale(0.98);
+            box-shadow: 0 3px 10px rgba(0, 102, 204, 0.3);
+        }
+
+        .btn:focus {
+            outline: 2px solid #0099ff;
+            outline-offset: 2px;
         }
 
         .btn::before {
@@ -345,12 +412,13 @@
         .option {
             display: flex;
             align-items: center;
-            padding: 12px 15px;
+            padding: 14px 16px;
             background: white;
             border: 2px solid #ddd;
             border-radius: 6px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
+            min-height: 56px;
         }
 
         .option:hover {
@@ -361,26 +429,22 @@
         .option input[type="radio"] {
             margin-right: 12px;
             cursor: pointer;
-            width: 18px;
-            height: 18px;
-        }
-
-        .option span {
-            flex: 1;
-            color: #333;
+            width: 20px;
+            height: 20px;
+            min-width: 20px;
         }
 
         .button-group {
             display: flex;
             gap: 15px;
-            margin-top: 30px;
             justify-content: center;
+            margin-top: 30px;
             flex-wrap: wrap;
         }
 
+        /* Result Section Styles */
         #result-section {
             display: none;
-            animation: slideIn 0.5s ease;
         }
 
         #result-section.active {
@@ -388,47 +452,250 @@
         }
 
         .result-header {
-            background: linear-gradient(135deg, #0066cc 0%, #0099ff 100%);
-            color: white;
-            padding: 40px 30px;
             text-align: center;
-            border-radius: 8px;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 12px;
             margin-bottom: 30px;
-        }
-
-        .result-score {
-            font-size: 3em;
-            font-weight: 700;
-            margin-bottom: 15px;
-            animation: pulse 1s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
         }
 
         .result-message {
             font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .result-score {
+            font-size: 4em;
+            font-weight: 700;
+            color: #0066cc;
             margin-bottom: 10px;
         }
 
         .result-rank {
-            font-size: 1.1em;
-            opacity: 0.95;
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 15px;
         }
 
         .user-count {
-            font-size: 1.2em;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 2px solid rgba(255,255,255,0.3);
+            font-size: 1em;
+            color: #888;
+            margin-bottom: 20px;
         }
 
+        /* Digital Certificate */
+        .certificate-section {
+            background: linear-gradient(135deg, #1a2332 0%, #2c3e50 100%);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+            color: white;
+        }
+
+        .certificate-section h3 {
+            color: #c9a961;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .certificate-card {
+            background: linear-gradient(135deg, #f5f3ed 0%, #e8e6e0 100%);
+            border: 4px solid #c9a961;
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 400px;
+            margin: 0 auto 20px;
+            color: #1a2332;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .certificate-card::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 2px solid #c9a961;
+            border-radius: 10px;
+            pointer-events: none;
+        }
+
+        .certificate-title {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #1a2332;
+            margin-bottom: 10px;
+        }
+
+        .certificate-level {
+            font-size: 1.2em;
+            color: #d84315;
+            margin-bottom: 15px;
+        }
+
+        .certificate-score {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #c9a961;
+            margin-bottom: 10px;
+        }
+
+        .certificate-date {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .certificate-badge {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #c9a961 0%, #d4af37 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            font-size: 2em;
+            box-shadow: 0 4px 15px rgba(201, 169, 97, 0.4);
+        }
+
+        .certificate-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .certificate-btn {
+            background: #c9a961;
+            color: #1a2332;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .certificate-btn:hover {
+            background: #d4af37;
+            transform: translateY(-2px);
+        }
+
+        /* Next Course Banner */
+        .next-course-banner {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+            color: white;
+        }
+
+        .next-course-banner.intermediate-next {
+            background: linear-gradient(135deg, #ffc107 0%, #ffca2c 100%);
+            color: #333;
+        }
+
+        .next-course-banner.advanced-next {
+            background: linear-gradient(135deg, #dc3545 0%, #e74c3c 100%);
+        }
+
+        .next-course-banner.ambassador {
+            background: linear-gradient(135deg, #6f42c1 0%, #9b59b6 100%);
+        }
+
+        .next-course-banner h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .next-course-banner p {
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .next-course-btn {
+            background: white;
+            color: #333;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+        }
+
+        .next-course-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* LP Link Section */
+        .lp-link-section {
+            background: linear-gradient(135deg, #1a2332 0%, #0f1419 100%);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+            color: white;
+        }
+
+        .lp-link-section h3 {
+            color: #c9a961;
+            margin-bottom: 15px;
+        }
+
+        .lp-link-section p {
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .lp-link-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .lp-link-item {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .lp-link-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+
+        .lp-link-item .icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .lp-link-item .title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .lp-link-item .desc {
+            font-size: 0.85em;
+            opacity: 0.8;
+        }
+
+        /* Share Buttons */
         .share-buttons {
             display: flex;
             gap: 10px;
@@ -438,27 +705,35 @@
         }
 
         .share-btn {
-            background: white;
-            color: #0066cc;
-            padding: 10px 15px;
-            border-radius: 6px;
+            padding: 12px 20px;
             border: none;
+            border-radius: 6px;
             cursor: pointer;
             font-weight: 600;
+            transition: all 0.2s ease;
             font-size: 0.9em;
-            transition: all 0.3s ease;
+            min-height: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .share-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
+        .share-btn:nth-child(1) { background: #1DA1F2; color: white; }
+        .share-btn:nth-child(2) { background: #4267B2; color: white; }
+        .share-btn:nth-child(3) { background: #00B900; color: white; }
+        .share-btn:nth-child(4) { background: #6c757d; color: white; }
+
+        /* Answer Review */
         .answer-review {
-            margin-top: 30px;
-            padding: 20px;
             background: #f8f9fa;
-            border-radius: 8px;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
         }
 
         .answer-review h3 {
@@ -469,20 +744,18 @@
 
         .answer-item {
             background: white;
+            border-radius: 8px;
             padding: 20px;
             margin-bottom: 15px;
-            border-radius: 6px;
             border-left: 4px solid #ddd;
         }
 
         .answer-item.correct {
             border-left-color: #28a745;
-            background: #f0fff4;
         }
 
         .answer-item.incorrect {
             border-left-color: #dc3545;
-            background: #fff5f5;
         }
 
         .answer-item-icon {
@@ -515,30 +788,182 @@
         }
 
         @media (max-width: 600px) {
+            body {
+                padding: 8px;
+            }
+
+            .container {
+                border-radius: 8px;
+            }
+
+            header {
+                padding: 24px 16px;
+            }
+
             header h1 {
-                font-size: 1.8em;
+                font-size: clamp(1.5rem, 5vw, 2rem);
+            }
+
+            header p {
+                font-size: 0.95rem;
             }
 
             .content {
-                padding: 20px 15px;
+                padding: 16px 12px;
+            }
+
+            #difficulty-selection {
+                grid-template-columns: 1fr;
+                gap: 12px;
             }
 
             .difficulty-card {
-                padding: 20px;
+                padding: 16px 12px;
+                min-height: 56px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
 
-            .result-score {
-                font-size: 2em;
+            .difficulty-card .icon {
+                font-size: 2.5em;
+                margin-bottom: 12px;
+            }
+
+            .difficulty-card h3 {
+                font-size: 1.3rem;
+            }
+
+            .difficulty-card p {
+                font-size: 0.9rem;
+            }
+
+            .difficulty-card .btn {
+                width: 100%;
+                margin-top: 12px;
             }
 
             .question-item {
-                padding: 15px;
+                padding: 12px;
+                margin-bottom: 16px;
+            }
+
+            .question-text {
+                font-size: 1rem;
+                margin-bottom: 16px;
+            }
+
+            .options {
+                gap: 10px;
+            }
+
+            .option {
+                padding: 12px 12px;
+                min-height: 52px;
+            }
+
+            .result-score {
+                font-size: 2.5rem;
+            }
+
+            .result-message {
+                font-size: 1.2rem;
+            }
+
+            .button-group {
+                gap: 10px;
+                margin-top: 20px;
+            }
+
+            .button-group .btn {
+                flex: 1;
+                min-width: 120px;
+            }
+
+            .lp-banner {
+                flex-direction: column;
+                gap: 10px;
+                padding: 12px 16px;
+            }
+
+            .lp-banner p {
+                font-size: 0.9rem;
+            }
+
+            .lp-banner a {
+                padding: 10px 20px;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+            }
+
+            .certificate-card {
+                max-width: 100%;
+                padding: 20px;
+            }
+
+            .share-buttons {
+                gap: 8px;
+            }
+
+            .share-btn {
+                flex: 1;
+                min-width: 80px;
+                padding: 10px 12px;
+                font-size: 0.85rem;
+            }
+
+            .lp-link-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .lp-link-item {
+                padding: 12px;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .next-course-banner {
+                padding: 16px 12px;
+            }
+
+            .next-course-btn {
+                width: 100%;
+            }
+        }
+
+        @media (min-width: 601px) and (max-width: 1024px) {
+            .difficulty-card {
+                padding: 24px;
+            }
+
+            .question-item {
+                padding: 20px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- LP Link Banner -->
+        <div class="lp-banner">
+            <p>🏛️ 宗像検定の詳細・合格特典はこちら</p>
+            <a href="https://nakamura-munakata.github.io/munakata-kentei-lp/">公式サイトを見る</a>
+        </div>
+
         <header>
             <h1>🏛️ 宗像検定</h1>
             <p>宗像地域の歴史・文化・特産品を学ぶ</p>
@@ -559,7 +984,7 @@
                     <p>基本情報をしっかり理解しよう</p>
                     <ul class="difficulty-info">
                         <li>問題数：11問</li>
-                        <li>形式：選択肂11問</li>
+                        <li>形式：選択肢11問</li>
                         <li>配点：100点</li>
                         <li>難易度：★☆☆</li>
                     </ul>
@@ -648,12 +1073,60 @@
                     <div class="result-score" id="result-score">0点</div>
                     <div class="result-rank" id="result-rank"></div>
                     <div class="user-count" id="result-user-count"></div>
-                    <div class="share-buttons">
-                        <button class="share-btn" onclick="shareOnTwitter()">𝕏でシェア</button>
-                        <button class="share-btn" onclick="shareOnFacebook()">Facebookでシェア</button>
-                        <button class="share-btn" onclick="shareOnLine()">LINEでシェア</button>
-                        <button class="share-btn" onclick="copyLink()">リンクをコピー</button>
+                </div>
+
+                <!-- デジタル認定証 -->
+                <div class="certificate-section" id="certificate-section" style="display: none;">
+                    <h3>🎖️ デジタル認定証</h3>
+                    <div class="certificate-card" id="certificate-card">
+                        <div class="certificate-badge" id="certificate-badge">🏛️</div>
+                        <div class="certificate-title">宗像検定</div>
+                        <div class="certificate-level" id="certificate-level">課長コース</div>
+                        <div class="certificate-score" id="certificate-score-display">合格</div>
+                        <div class="certificate-date" id="certificate-date"></div>
                     </div>
+                    <div class="certificate-actions">
+                        <button class="certificate-btn" onclick="downloadCertificate()">📥 認定証を保存</button>
+                        <button class="certificate-btn" onclick="shareCertificate()">📤 SNSでシェア</button>
+                    </div>
+                </div>
+
+                <!-- 次のコースへの誘導 -->
+                <div class="next-course-banner" id="next-course-banner" style="display: none;">
+                    <h3 id="next-course-title">🎉 次は部長コースに挑戦！</h3>
+                    <p id="next-course-desc">課長コースをクリアしたあなたなら、部長コースも突破できるはず！</p>
+                    <button class="next-course-btn" id="next-course-btn" onclick="goToNextCourse()">部長コースに挑戦する</button>
+                </div>
+
+                <!-- LP サイトへのリンク -->
+                <div class="lp-link-section">
+                    <h3>🎁 合格特典を確認しよう</h3>
+                    <p>宗像検定合格者には、市内で使える特典をご用意しています！</p>
+                    <div class="lp-link-grid">
+                        <a href="https://nakamura-munakata.github.io/munakata-kentei-lp/#benefits" class="lp-link-item">
+                            <div class="icon">🎫</div>
+                            <div class="title">市内クーポン</div>
+                            <div class="desc">協力店舗で使える特典</div>
+                        </a>
+                        <a href="https://nakamura-munakata.github.io/munakata-kentei-lp/#learning" class="lp-link-item">
+                            <div class="icon">📚</div>
+                            <div class="title">学習コンテンツ</div>
+                            <div class="desc">もっと宗像を知ろう</div>
+                        </a>
+                        <a href="https://nakamura-munakata.github.io/munakata-kentei-lp/#courses" class="lp-link-item">
+                            <div class="icon">🏆</div>
+                            <div class="title">他のコース</div>
+                            <div class="desc">さらに上を目指そう</div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- SNSシェアボタン -->
+                <div class="share-buttons">
+                    <button class="share-btn" onclick="shareOnTwitter()">𝕏でシェア</button>
+                    <button class="share-btn" onclick="shareOnFacebook()">Facebookでシェア</button>
+                    <button class="share-btn" onclick="shareOnLine()">LINEでシェア</button>
+                    <button class="share-btn" onclick="copyLink()">リンクをコピー</button>
                 </div>
 
                 <div class="answer-review">
@@ -663,6 +1136,7 @@
 
                 <div class="button-group">
                     <button class="btn" onclick="retryExam()">もう一度受験する</button>
+                    <a href="https://nakamura-munakata.github.io/munakata-kentei-lp/" class="btn" style="text-decoration: none; display: inline-block;">公式サイトへ</a>
                 </div>
             </div>
         </div>
@@ -711,6 +1185,7 @@
         };
 
         let currentDifficulty = null;
+        let currentScore = 0;
 
         function startExam(difficulty) {
             currentDifficulty = difficulty;
@@ -785,11 +1260,13 @@
                 }
             });
 
-            displayResults(Math.round(score), difficulty, answers);
+            currentScore = Math.round(score);
+            displayResults(currentScore, difficulty, answers);
         }
 
         function displayResults(score, difficulty, answers) {
             const userCount = incrementUserCount();
+            saveExamResult(difficulty, score);
 
             document.getElementById(difficulty + '-exam').classList.remove('active');
             document.getElementById('result-section').classList.add('active');
@@ -798,6 +1275,8 @@
 
             let message = '';
             let rank = '';
+            const isPassed = score >= 60;
+
             if (score >= 80) {
                 message = '🌟 素晴らしい成績です！';
                 rank = '評価: 優秀（80点以上）';
@@ -813,12 +1292,84 @@
             document.getElementById('result-rank').textContent = rank;
             document.getElementById('result-user-count').textContent = `あなたは${userCount}番目の受講生です！`;
 
+            // 合格時のみ認定証と次のコースを表示
+            if (isPassed) {
+                showCertificate(difficulty, score);
+                showNextCourseBanner(difficulty);
+            } else {
+                document.getElementById('certificate-section').style.display = 'none';
+                document.getElementById('next-course-banner').style.display = 'none';
+            }
+
             displayAnswerReview(answers);
             
             // 結果セクションにスクロール
             setTimeout(() => {
                 document.getElementById('result-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
             }, 300);
+        }
+
+        function showCertificate(difficulty, score) {
+            const levelNames = {
+                'beginner': '課長コース',
+                'intermediate': '部長コース',
+                'advanced': '市長コース'
+            };
+
+            const badges = {
+                'beginner': '👨‍💼',
+                'intermediate': '👔',
+                'advanced': '🏆'
+            };
+
+            document.getElementById('certificate-section').style.display = 'block';
+            document.getElementById('certificate-level').textContent = levelNames[difficulty];
+            document.getElementById('certificate-score-display').textContent = score >= 80 ? '優秀合格' : '合格';
+            document.getElementById('certificate-badge').textContent = badges[difficulty];
+            
+            const today = new Date();
+            document.getElementById('certificate-date').textContent = 
+                `${today.getFullYear()}年${today.getMonth() + 1}月${today.getDate()}日 認定`;
+        }
+
+        function showNextCourseBanner(difficulty) {
+            const banner = document.getElementById('next-course-banner');
+            const title = document.getElementById('next-course-title');
+            const desc = document.getElementById('next-course-desc');
+            const btn = document.getElementById('next-course-btn');
+
+            banner.className = 'next-course-banner';
+
+            if (difficulty === 'beginner') {
+                banner.classList.add('intermediate-next');
+                title.textContent = '🎉 次は部長コースに挑戦！';
+                desc.textContent = '課長コースをクリアしたあなたなら、部長コースも突破できるはず！';
+                btn.textContent = '部長コースに挑戦する';
+                btn.onclick = () => goToNextCourse('intermediate');
+            } else if (difficulty === 'intermediate') {
+                banner.classList.add('advanced-next');
+                title.textContent = '🔥 いよいよ市長コースへ！';
+                desc.textContent = '部長コースをクリア！最高難度の市長コースで宗像マスターを目指そう！';
+                btn.textContent = '市長コースに挑戦する';
+                btn.onclick = () => goToNextCourse('advanced');
+            } else if (difficulty === 'advanced') {
+                banner.classList.add('ambassador');
+                title.textContent = '🎊 おめでとうございます！宗像アンバサダー認定！';
+                desc.textContent = '全コースをクリア！あなたは宗像の魅力を世界に発信できるアンバサダーです！';
+                btn.textContent = '特典を確認する';
+                btn.onclick = () => window.open('https://nakamura-munakata.github.io/munakata-kentei-lp/#benefits', '_blank');
+            }
+
+            banner.style.display = 'block';
+        }
+
+        function goToNextCourse(nextDifficulty) {
+            document.getElementById('result-section').classList.remove('active');
+            document.getElementById('difficulty-selection').classList.remove('hidden');
+            
+            setTimeout(() => {
+                startExam(nextDifficulty);
+            }, 100);
         }
 
         function displayAnswerReview(answers) {
@@ -852,6 +1403,7 @@
             });
         }
 
+        // ローカルストレージ関連
         function getUserCount() {
             if (!window.munakatakentei_globalcount) {
                 let count = localStorage.getItem('munakatakentei_usercount_global');
@@ -868,28 +1420,65 @@
             return count;
         }
 
+        function saveExamResult(difficulty, score) {
+            const results = JSON.parse(localStorage.getItem('munakatakentei_results') || '[]');
+            results.push({
+                difficulty: difficulty,
+                score: score,
+                date: new Date().toISOString(),
+                passed: score >= 60
+            });
+            localStorage.setItem('munakatakentei_results', JSON.stringify(results));
+        }
+
+        // SNSシェア機能
         function shareOnTwitter() {
             const score = document.getElementById('result-score').textContent;
-            const text = `宗像検定に挑戦しました！スコア: ${score} 🏛️ https://nakamura-munakata.github.io/munakata-kentei/`;
-            window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`);
+            const levelNames = {
+                'beginner': '課長',
+                'intermediate': '部長',
+                'advanced': '市長'
+            };
+            const level = levelNames[currentDifficulty] || '';
+            const isPassed = currentScore >= 60;
+            const passText = isPassed ? '合格しました！🎉' : '挑戦しました！';
+            
+            const text = `宗像検定【${level}コース】に${passText}\nスコア: ${score}\n\n世界遺産・宗像の歴史を学ぼう！\n#宗像検定 #宗像市 #世界遺産`;
+            const url = 'https://nakamura-munakata.github.io/munakata-kentei-lp/';
+            window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`);
         }
 
         function shareOnFacebook() {
-            const url = 'https://nakamura-munakata.github.io/munakata-kentei/';
+            const url = 'https://nakamura-munakata.github.io/munakata-kentei-lp/';
             window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
         }
 
         function shareOnLine() {
             const score = document.getElementById('result-score').textContent;
-            const text = `宗像検定に挑戦しました！スコア: ${score} 🏛️`;
-            window.open(`https://line.me/R/msg/text/${encodeURIComponent(text + ' https://nakamura-munakata.github.io/munakata-kentei/')}`);
+            const levelNames = {
+                'beginner': '課長',
+                'intermediate': '部長',
+                'advanced': '市長'
+            };
+            const level = levelNames[currentDifficulty] || '';
+            const text = `宗像検定【${level}コース】に挑戦しました！スコア: ${score} 🏛️`;
+            window.open(`https://line.me/R/msg/text/${encodeURIComponent(text + '\nhttps://nakamura-munakata.github.io/munakata-kentei-lp/')}`);
         }
 
         function copyLink() {
-            const url = 'https://nakamura-munakata.github.io/munakata-kentei/';
+            const url = 'https://nakamura-munakata.github.io/munakata-kentei-lp/';
             navigator.clipboard.writeText(url).then(() => {
                 alert('リンクをコピーしました！');
             });
+        }
+
+        // 認定証機能
+        function downloadCertificate() {
+            alert('認定証の画像保存機能は準備中です。\nスクリーンショットで保存してください。');
+        }
+
+        function shareCertificate() {
+            shareOnTwitter();
         }
 
         function backToDifficulty() {
