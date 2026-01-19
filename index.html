@@ -224,12 +224,15 @@
         .difficulty-card {
             background: white;
             border-radius: 12px;
-            padding: 30px;
+            padding: 24px 20px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             border: 3px solid transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .difficulty-card:hover {
@@ -270,17 +273,21 @@
         }
 
         .difficulty-info {
-            text-align: left;
+            text-align: center;
             font-size: 0.85em;
             color: #555;
             margin-top: 15px;
             padding-top: 15px;
             border-top: 1px solid rgba(0,0,0,0.1);
+            list-style: none;
+            padding-left: 0;
+            width: 100%;
         }
 
         .difficulty-info li {
-            margin: 5px 0;
-            list-style-position: inside;
+            margin: 8px 0;
+            padding: 4px 0;
+            display: block;
         }
 
         .btn {
@@ -814,33 +821,64 @@
 
             #difficulty-selection {
                 grid-template-columns: 1fr;
-                gap: 12px;
+                gap: 16px;
+                padding: 0 8px;
             }
 
             .difficulty-card {
-                padding: 16px 12px;
-                min-height: 56px;
+                padding: 20px 16px;
+                min-height: auto;
                 display: flex;
+                flex-direction: column;
                 align-items: center;
-                justify-content: center;
+                justify-content: flex-start;
+                text-align: center;
             }
 
             .difficulty-card .icon {
                 font-size: 2.5em;
-                margin-bottom: 12px;
+                margin-bottom: 8px;
+                display: block;
             }
 
             .difficulty-card h3 {
-                font-size: 1.3rem;
+                font-size: 1.5rem;
+                margin-bottom: 8px;
+                display: block;
+                width: 100%;
             }
 
             .difficulty-card p {
-                font-size: 0.9rem;
+                font-size: 0.95rem;
+                margin-bottom: 12px;
+                display: block;
+                width: 100%;
+            }
+
+            .difficulty-info {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 8px 16px;
+                text-align: center;
+                width: 100%;
+                margin-top: 12px;
+                padding-top: 12px;
+            }
+
+            .difficulty-info li {
+                margin: 0;
+                padding: 6px 8px;
+                background: rgba(255,255,255,0.5);
+                border-radius: 6px;
+                font-size: 0.85rem;
+                white-space: nowrap;
             }
 
             .difficulty-card .btn {
                 width: 100%;
-                margin-top: 12px;
+                margin-top: 16px;
+                padding: 14px 20px;
+                font-size: 1.1rem;
             }
 
             .question-item {
@@ -1417,18 +1455,58 @@
             count++;
             window.munakatakentei_globalcount = count;
             localStorage.setItem('munakatakentei_usercount_global', count);
+            
+            // LP用の統計データも更新
+            updateQuizStats(true, false);
+            
             return count;
         }
 
         function saveExamResult(difficulty, score) {
             const results = JSON.parse(localStorage.getItem('munakatakentei_results') || '[]');
+            const passed = score >= 80; // 80%以上で合格
             results.push({
                 difficulty: difficulty,
                 score: score,
                 date: new Date().toISOString(),
-                passed: score >= 60
+                passed: passed
             });
             localStorage.setItem('munakatakentei_results', JSON.stringify(results));
+            
+            // LP用の統計データも更新（合格の場合）
+            if (passed) {
+                updateQuizStats(false, true);
+            }
+        }
+        
+        // LP用の統計データを更新する関数
+        function updateQuizStats(incrementExams, incrementPassed) {
+            const stats = JSON.parse(localStorage.getItem('munakata_quiz_stats') || '{"totalExams": 0, "totalPassed": 0}');
+            
+            if (incrementExams) {
+                stats.totalExams = (stats.totalExams || 0) + 1;
+            }
+            if (incrementPassed) {
+                stats.totalPassed = (stats.totalPassed || 0) + 1;
+            }
+            
+            localStorage.setItem('munakata_quiz_stats', JSON.stringify(stats));
+            
+            // 本日の受験者数も更新
+            const today = new Date().toDateString();
+            const todayStats = JSON.parse(localStorage.getItem('munakata_today_stats') || '{}');
+            
+            if (todayStats.date !== today) {
+                // 日付が変わったらリセット
+                todayStats.date = today;
+                todayStats.count = 0;
+            }
+            
+            if (incrementExams) {
+                todayStats.count = (todayStats.count || 0) + 1;
+            }
+            
+            localStorage.setItem('munakata_today_stats', JSON.stringify(todayStats));
         }
 
         // SNSシェア機能
